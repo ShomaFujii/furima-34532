@@ -52,7 +52,7 @@ Things you may want to cover:
 | describe           | text       | null: false                    | 
 | category_id        | integer    | null: false                    |
 | shipping_fee_id    | integer    | null: false                    |
-| region_id          | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | delivery_date_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
@@ -80,11 +80,11 @@ Things you may want to cover:
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | zip_code           | integer    | null: false                    |
-| prefecture_id      | integer     | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | street_number      | string     | null: false                    | 
 | building           | string     |                                |
-| phone_number       | integer     | null: false                    |
+| phone_number       | string     | null: false                    |
 | purchaser          | references | null: false, foreign_key: true |
 
 
