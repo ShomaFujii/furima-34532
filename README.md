@@ -27,18 +27,17 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| password           | string  | null: false |
-| FirstNameCharacter | string  | null: false |
-| LastNameCharacter  | string  | null: false |
-| FirstNameKana      | string  | null: false |
-| LastNameKana       | string  | null: false |
-| BirthdayYear       | integer | null: false |
-| BirthdayDay        | integer | null: false |
-| BirthdayMonth      | integer | null: false |
+| Column               | Type    | Options                  |
+| -------------------- | ------- | ------------------------ |
+| nickname             | string  | null: false              |
+| email                | string  | null: false ,unique: true|
+| encrypted_password   | string  | null: false              |
+| first_name_character | string  | null: false              |
+| last_name_character  | string  | null: false              |
+| first_name_kana      | string  | null: false              |
+| last_name_kana       | string  | null: false              |
+| birthday             | date    | null: false              |
+ 
 ### Association
 
 - has_many :items
@@ -49,13 +48,12 @@ Things you may want to cover:
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| condition          | string     | null: false                    |
-| image              | text       | null: false                    |
+| condition_id       | integer    | null: false                    |
 | describe           | text       | null: false                    | 
-| category           | string     | null: false                    |
-| ShippingFee        | string     | null: false                    |
-| region             | string     | null: false                    |
-| DeliveryDate       | string     | null: false                    |
+| category_id        | integer    | null: false                    |
+| shipping_fee_id    | integer    | null: false                    |
+| region_id          | integer    | null: false                    |
+| delivery_date_id   | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
@@ -69,10 +67,6 @@ Things you may want to cover:
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| CreditCardNumber   | integer     | null: false                    |
-| ValidMonth         | integer     | null: false                    |
-| ValidYear          | integer     | null: false                    |
-| SecurityCode       | integer     | null: false                    | 
 | user               | references | null: false, foreign_key: true |
 | item               | references | null: false, foreign_key: true |
 ### Association
@@ -85,12 +79,12 @@ Things you may want to cover:
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| ZipCode            | integer     | null: false                    |
-| prefecture         | string     | null: false                    |
+| zip_code           | integer    | null: false                    |
+| prefecture_id      | integer     | null: false                    |
 | city               | string     | null: false                    |
-| StreetNumber       | string     | null: false                    | 
+| street_number      | string     | null: false                    | 
 | building           | string     |                                |
-| PhoneNumber        | integer     | null: false                    |
+| phone_number       | integer     | null: false                    |
 | purchaser          | references | null: false, foreign_key: true |
 
 
