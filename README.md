@@ -79,7 +79,7 @@ Things you may want to cover:
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| zip_code           | integer    | null: false                    |
+| zip_code           | string     | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | street_number      | string     | null: false                    | 
