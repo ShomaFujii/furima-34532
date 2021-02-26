@@ -12,6 +12,10 @@ end
 
 extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :condition
+  belongs_to :prefecture
+  belongs_to :category
+  belongs_to :shippingFee
+  belongs_to :deliveryDate
 
   validates :condition_id,:category_id ,:shipping_fee_id,:delivery_date_id, numericality: { other_than: 1 }
 
