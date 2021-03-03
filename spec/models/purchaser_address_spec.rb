@@ -9,6 +9,7 @@ RSpec.describe PurchaserAddress, type: :model do
       sleep(0.5)
     end  
 
+   context '商品購入ができる時' do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@purchaser_address).to be_valid
     end
@@ -16,6 +17,9 @@ RSpec.describe PurchaserAddress, type: :model do
       @purchaser_address.building = ""
       expect(@purchaser_address).to be_valid
     end
+   end
+
+   context '商品購入ができない時' do
     it 'tokenが空だと保存できないこと' do
       @purchaser_address.token = nil
         @purchaser_address.valid?
@@ -51,11 +55,6 @@ RSpec.describe PurchaserAddress, type: :model do
       @purchaser_address.valid?
       expect(@purchaser_address.errors.full_messages).to include('Zip code is invalid. Include hyphen(-)')
     end
-    it '電話番号は10桁以内の数値では保存できないこと' do
-      @purchaser_address.phone_number = '0900989887'
-      @purchaser_address.valid?
-      expect(@purchaser_address.errors.full_messages).to include("Phone number is invalid. without hyphen(-)")
-    end
     it '電話番号は12桁以上の数値では保存できないこと' do
       @purchaser_address.phone_number = '090098988783'
       @purchaser_address.valid?
@@ -81,7 +80,7 @@ RSpec.describe PurchaserAddress, type: :model do
       @purchaser_address.phone_number = '09009ahsgrj'
       @purchaser_address.valid?
       expect(@purchaser_address.errors.full_messages).to include("Phone number is invalid. without hyphen(-)")
+    end
+   end
   end
-end
-
 end
