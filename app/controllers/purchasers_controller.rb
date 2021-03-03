@@ -26,10 +26,7 @@ class PurchasersController < ApplicationController
   end
 
   def set_remove
-    unless @item.user_id != current_user.id
-      redirect_to root_path
-    end
-    unless @item.purchaser.nil?
+    unless (@item.user_id != current_user.id) && @item.purchaser.nil?
       redirect_to root_path
     end
   end

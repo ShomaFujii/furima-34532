@@ -49,11 +49,8 @@ class ItemsController < ApplicationController
   private
 
   def set_remove
-    unless @item.user_id == current_user.id
+    unless (@item.user_id == current_user.id) && @item.purchaser.nil?
       redirect_to action: :index
-    end
-    unless @item.purchaser.nil?
-      redirect_to root_path
     end
   end
 
