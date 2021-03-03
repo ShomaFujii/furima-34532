@@ -44,4 +44,7 @@ class PurchasersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+  
 end
+
+
