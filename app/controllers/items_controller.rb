@@ -27,6 +27,9 @@ class ItemsController < ApplicationController
     unless @item.user_id == current_user.id
       redirect_to action: :index
     end
+    unless @item.purchaser.nil?
+      redirect_to root_path
+    end
   end
 
   def destroy
