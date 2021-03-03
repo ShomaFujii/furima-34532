@@ -1,21 +1,15 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_item, only:[:index,:create]
+  before_action :set_remove, only:[:index,:create]
   def index
     @purchaser_address = PurchaserAddress.new
-    @item = Item.find(params[:item_id])
-    unless @item.user_id != current_user.id
-      redirect_to root_path
-    end
-    unless @item.purchaser.nil?
-      redirect_to root_path
-    end
   end
 
  
   def create
     @purchaser_address = PurchaserAddress.new(purchaser_params)
-    @item = Item.find(params[:item_id])
+    
     if @purchaser_address.valid?
        pay_item
        @purchaser_address.save
@@ -26,6 +20,19 @@ class PurchasersController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def set_remove
+    unless @item.user_id != current_user.id
+      redirect_to root_path
+    end
+    unless @item.purchaser.nil?
+      redirect_to root_path
+    end
+  end
 
   def purchaser_params
     params.require(:purchaser_address).permit(:zip_code, :prefecture_id, :city, :street_number, :building, :phone_number).merge(user_id: current_user.id,item_id: params[:item_id],token: params[:token])

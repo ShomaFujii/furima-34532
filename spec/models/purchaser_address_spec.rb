@@ -67,5 +67,16 @@ RSpec.describe PurchaserAddress, type: :model do
       @purchaser_address.valid?
       expect(@purchaser_address.errors.full_messages).to include("Phone number is invalid. without hyphen(-)") 
     end
+    it 'user.idが空の時、保存できない' do
+      @purchaser_address.user_id = nil
+      @purchaser_address.valid?
+      expect(@purchaser_address.errors.full_messages).to include("User can't be blank")
+    end
+    it 'user.idが空の時、保存できない' do
+      @purchaser_address.item_id = nil
+      @purchaser_address.valid?
+      expect(@purchaser_address.errors.full_messages).to include("Item can't be blank")
+    end
+
   end
 end
