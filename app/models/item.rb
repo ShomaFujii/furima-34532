@@ -8,7 +8,7 @@ with_options presence: true do
   validates :name
   validates :image
   validates :discribe
-  validates :price,numericality: { greater_than:300 , less_than: 10000000},format:{with: /\A[0-9]+\z/}
+  validates :price,numericality: { greater_than:299 , less_than: 10000000},format:{with: /\A[0-9]+\z/}
 end
 
 extend ActiveHash::Associations::ActiveRecordExtensions
